@@ -1,0 +1,17 @@
+html, body, .noSidebarCell, .sidebarCell .fixed {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: white; }
+
+/* ----------------------------------------
+SLDS Design Tokens
+---------------------------------------- */
+/* ----------------------------------------
+Partials
+---------------------------------------- */
+body .slds {
+  /* ----------------------------------------
+    Projects Styles
+    ---------------------------------------- */ }
+
+/*# sourceMappingURL=main.css.map */

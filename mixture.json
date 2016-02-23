@@ -1,0 +1,42 @@
+{
+    "convertHtml": {
+        "relativePaths": false
+    },
+    "customRubyPath": null,
+    "debug": false,
+    "domain": null,
+    "followLeader": false,
+    "lintScripts": false,
+    "modelSource": null,
+    "preprocessorLocations": ["scss", "css", "js"],
+    "preprocessorStyleOutput": "css",
+    "preprocessorScriptOutput": "js",
+    "ignoreDir": ["node_modules"],
+    "projectDescription": "Lightning Development Starting Point",
+    "projectName": "lightning-webegin",
+    "publishedId": null,
+    "serverHostname": null,
+    "serverPort": null,
+    "simpleModePartnerServer": null,
+    "templateDefaultLayout": "layout",
+    "templateDefaultPage": "index",
+    "templateDirectory": "templates",
+    "type": "simple",
+    "useCompass": false,
+    "autoPrefixer": {
+        "active": true,
+        "sourceMap": false,
+        "browsers": [
+            "last 5 versions",
+            "> 5%",
+            "ie 9"
+        ]
+    },
+    "sass": {
+        "outputStyle": "expanded",
+        "sourceMap": false,
+        "cache": false,
+        "lineNumbers": false,
+        "useLibSass": false
+    }
+}

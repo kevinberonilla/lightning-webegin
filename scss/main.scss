@@ -1,0 +1,32 @@
+html, body, .noSidebarCell, .sidebarCell .fixed {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white;
+}
+
+
+/* ----------------------------------------
+SLDS Design Tokens
+---------------------------------------- */
+@import 'slds-tokens/bg-actions',
+    'slds-tokens/bg-custom',
+    'slds-tokens/bg-icons',
+    'slds-tokens/bg-standard',
+    'slds-tokens/force-base',
+//    'slds-tokens/force-font-commons',
+    'slds-tokens/force-mq-commons',
+    'slds-tokens/s1-base-large',
+    'slds-tokens/s1-base-medium',
+    'slds-tokens/s1-base';
+
+/* ----------------------------------------
+Partials
+---------------------------------------- */
+@import 'variables';
+
+body .slds { // Scope
+    /* ----------------------------------------
+    Projects Styles
+    ---------------------------------------- */
+    @import 'project';
+}
