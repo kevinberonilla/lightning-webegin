@@ -17,9 +17,9 @@ Partials
 ---------------------------------------- */
 @import 'variables';
 
-.THIS .slds { // Scope
+.THIS.slds { // Scope
     /* ----------------------------------------
-    Projects Styles
+    Project Styles
     ---------------------------------------- */
     @import 'project';
 }
