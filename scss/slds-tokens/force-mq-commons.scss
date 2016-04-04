@@ -1,4 +1,4 @@
-$mq-small: 'only screen and (max-width: 47.9375em)'; // Sass error bypass
+$mq-small: only screen and (max-width: 47.9375em);
 $mq-medium: only screen and (min-width: 48em);
 $mq-medium-landscape: only screen and (min-width: 48em) and (min-aspect-ratio: 4/3);
 $mq-large: only screen and (min-width: 64.0625em);
