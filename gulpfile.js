@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     sass = require('gulp-sass'),
-    minifyCss = require('gulp-minify-css'),
+    cssnano = require('gulp-cssnano'),
     rename = require('gulp-rename'),
     autoprefixer = require('gulp-autoprefixer'),
     svgSprite = require('gulp-svg-sprites');
@@ -18,10 +18,10 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('css'));
 });
 
-gulp.task('minify-css', function() {
+gulp.task('cssnano', function() {
     return gulp.src(['css/**/*.css', '!css/**/*.min.css'])
         .pipe(rename({ suffix: '.min' }))
-        .pipe(minifyCss())
+        .pipe(cssnano())
         .pipe(gulp.dest('css'));
 });
 
@@ -36,7 +36,7 @@ gulp.task('sprites', function () {
 gulp.task('watch', function() {
     gulp.watch('scss/**/*.scss', ['sass']);
     gulp.watch('images/icons/**/*.svg', ['sprites']);
-    gulp.watch(['css/**/*.css', '!css/**/*.min.css'], ['minify-css']);
+    gulp.watch(['css/**/*.css', '!css/**/*.min.css'], ['cssnano']);
 });
 
-gulp.task('default', ['sass', 'sprites', 'minify-css', 'watch']);
+gulp.task('default', ['sass', 'sprites', 'cssnano', 'watch']);
