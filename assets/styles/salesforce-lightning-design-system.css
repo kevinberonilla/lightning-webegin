@@ -1,4 +1,4 @@
-/*! Lightning Design System 2.0.1 */
+/*! Lightning Design System 2.0.2 */
 /*!
  * Copyright (c) 2015, salesforce.com, inc. All rights reserved.
  *
@@ -2352,8 +2352,8 @@ a.slds-button--inverse:focus {
   transition: border 0.1s linear, background-color 0.1s linear;
   display: inline-block;
   padding: 0 1rem 0 0.75rem;
-  line-height: 1.75rem;
-  min-height: calc(1.75rem + (1px * 2)); }
+  line-height: 1.875rem;
+  min-height: calc(1.875rem + (1px * 2)); }
 
 .slds-input:focus, .slds-input:active {
   outline: 0;
@@ -2380,13 +2380,13 @@ a.slds-button--inverse:focus {
   padding-bottom: 0;
   padding-left: 0.75rem;
   color: #16325c;
-  line-height: 1.75rem; }
+  line-height: 1.875rem; }
 
 .slds-input--bare:focus, .slds-input--bare:active {
   outline: 0; }
 
 .slds-input--height {
-  min-height: calc(1.75rem + (1px * 2)); }
+  min-height: calc(1.875rem + (1px * 2)); }
 
 .slds-input-has-icon {
   position: relative; }
@@ -2793,7 +2793,7 @@ a.slds-button--inverse:focus {
   border-radius: 0.25rem;
   width: 100%;
   transition: border 0.1s linear, background-color 0.1s linear;
-  height: 1.75rem; }
+  height: calc(1.875rem + (1px * 2)); }
 
 .slds-select:focus, .slds-select:active {
   outline: 0;
@@ -2814,7 +2814,7 @@ a.slds-button--inverse:focus {
   box-shadow: none; }
 
 .slds-select[size], .slds-select[multiple] {
-  min-height: 1.75rem;
+  min-height: calc(1.875rem + (1px * 2));
   height: inherit; }
 
 .slds-select[size] option, .slds-select[multiple] option {
@@ -4521,12 +4521,12 @@ a.slds-button--inverse:focus {
   -ms-flex-pack: justify;
       justify-content: space-between;
   max-width: 100%;
-  padding: 0.125rem 0.25rem;
+  padding: 0.125rem;
   border: 1px solid #d8dde6;
   border-radius: 0.25rem;
   background-color: white;
-  line-height: 1.5;
-  position: relative; }
+  position: relative;
+  min-height: 1.625rem; }
 
 .slds-pill + .slds-pill {
   margin-left: 0.125rem; }
@@ -4545,13 +4545,13 @@ a.slds-button--inverse:focus {
   background-color: transparent; }
 
 .slds-pill__container, .slds-pill-container, .slds-pill_container {
-  padding: 1px;
+  padding: 0.125rem;
   border: 1px solid #d8dde6;
   border-radius: 0.25rem;
-  min-height: calc(1.75rem + 2px); }
+  min-height: calc(1.875rem + 2px); }
 
 .slds-pill__container--bare, .slds-pill_container--bare {
-  padding: 2px 1px;
+  padding: 0.125rem;
   border: 0;
   border-radius: 0; }
 
@@ -5626,11 +5626,11 @@ a.slds-button--inverse:focus {
 .slds-lookup.slds-has-selection .slds-lookup__search-input {
   display: none; }
 
-.slds-lookup[data-select="single"] .slds-pill {
+.slds-lookup[data-select="single"] .slds-pill, .slds-lookup[data-select="multi"] .slds-pill {
   display: -ms-flexbox;
   display: flex; }
 
-.slds-lookup[data-select="single"] .slds-pill__remove {
+.slds-lookup[data-select="single"] .slds-pill__remove, .slds-lookup[data-select="multi"] .slds-pill__remove {
   margin-left: auto; }
 
 .slds-lookup.slds-has-selection .slds-input,
@@ -5753,7 +5753,8 @@ a.slds-button--inverse:focus {
 .slds-table--bordered:not(.slds-no-row-hover) tbody tr:hover > th:not(.slds-is-selected) {
   box-shadow: #d8dde6 0 -1px 0 inset, #d8dde6 0 1px 0 inset; }
 
-.slds-table--striped tr:nth-of-type(even) > td {
+.slds-table--striped tbody tr:nth-of-type(even) > td,
+.slds-table--striped tbody tr:nth-of-type(even) > th {
   background-color: #f4f6f9; }
 
 th.slds-is-sortable {
