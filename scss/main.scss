@@ -1,9 +1,10 @@
-html, body, .noSidebarCell, .sidebarCell .fixed {
+html,
+body:not(.sfdcBody),
+.noSidebarCell,
+.sidebarCell .fixed {
     margin: 0 !important;
     padding: 0 !important;
-    background: white;
 }
-
 
 /* ----------------------------------------
 SLDS Design Tokens
