@@ -22,7 +22,7 @@
     "type": "git",
     "url": "git+https://kevinberonilla@github.com/kevinberonilla/lightning-webegin.git"
   },
-  "author": "",
+  "author": "Kevin Beronilla <kevin.beronilla@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kevinberonilla/lightning-webegin/issues"
