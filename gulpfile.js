@@ -7,6 +7,16 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     svgSprite = require('gulp-svg-sprites');
 
+gulp.task('buildAssets', function() {
+    return gulp.src('node_modules/@salesforce-ux/design-system/assets/**/*')
+        .pipe(gulp.dest('assets'));
+});
+
+gulp.task('buildTokens', function() {
+    return gulp.src('node_modules/@salesforce-ux/design-system/scss/_design-tokens.scss')
+        .pipe(gulp.dest('scss'));
+});
+
 gulp.task('sass', function() {
     return gulp.src('scss/*.scss')
         .pipe(sourcemaps.init())
@@ -48,4 +58,4 @@ gulp.task('watch', function() {
     gulp.watch('images/icons/**/*.svg', ['sprites']);
 });
 
-gulp.task('default', ['sass', 'cssnano', 'uglify', 'sprites', 'watch']);
+gulp.task('default', ['buildAssets', 'buildTokens', 'sass', 'cssnano', 'uglify', 'sprites', 'watch']);
