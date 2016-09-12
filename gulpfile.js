@@ -7,14 +7,24 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     svgSprite = require('gulp-svg-sprites');
 
-gulp.task('buildAssets', function() {
-    return gulp.src('node_modules/@salesforce-ux/design-system/assets/**/*')
+gulp.task('build', function() { // Retrieves dependencies; run this first
+    gulp.src('node_modules/@salesforce-ux/design-system/assets/**/*')
         .pipe(gulp.dest('assets'));
-});
-
-gulp.task('buildTokens', function() {
-    return gulp.src('node_modules/@salesforce-ux/design-system/scss/_design-tokens.scss')
+    
+    gulp.src('node_modules/@salesforce-ux/design-system/scss/_design-tokens.scss')
         .pipe(gulp.dest('scss'));
+    
+    gulp.src('node_modules/appiphony-lightning-js/dist/**/*.js')
+        .pipe(gulp.dest('js'));
+    
+    gulp.src('node_modules/moment/src/moment.js')
+        .pipe(gulp.dest('js'));
+    
+    gulp.src('node_modules/moment/min/**/*.js')
+        .pipe(gulp.dest('js'));
+    
+    gulp.src('node_modules/svg4everybody/dist/**/*.js')
+        .pipe(gulp.dest('js'));
 });
 
 gulp.task('sass', function() {
@@ -58,4 +68,4 @@ gulp.task('watch', function() {
     gulp.watch('images/icons/**/*.svg', ['sprites']);
 });
 
-gulp.task('default', ['buildAssets', 'buildTokens', 'sass', 'cssnano', 'uglify', 'sprites', 'watch']);
+gulp.task('default', ['sass', 'cssnano', 'uglify', 'sprites', 'watch']);
