@@ -17,7 +17,7 @@ gulp.task('build', function() { // Retrieves dependencies; run this first
     gulp.src('node_modules/appiphony-lightning-js/dist/**/*.js')
         .pipe(gulp.dest('js'));
     
-    gulp.src('node_modules/moment/src/moment.js')
+    gulp.src('node_modules/moment/moment.js')
         .pipe(gulp.dest('js'));
     
     gulp.src('node_modules/moment/min/**/*.js')
