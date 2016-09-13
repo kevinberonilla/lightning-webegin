@@ -7,6 +7,7 @@ A bare-bones web development starting point with extended styles and scripts for
 * <a href="https://jquery.com/">**jQuery**</a> by jQuery Foundation (Google CDN)
 * <a href="http://lightningdesignsystem.com/">**Lightning Design System**</a> by Salesforce UX
 * <a href="http://aljs.appiphony.com/">**Appiphony Lightning JS**</a> by Appiphony, LLC
+* <a href="http://momentjs.com/">**Moment.js**</a> by Iskren Chernev
 * <a href="https://github.com/jonathantneal/svg4everybody">**SVG for Everybody**</a> by Jonathan Neal
 
 ---
