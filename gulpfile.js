@@ -7,22 +7,34 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     svgSprite = require('gulp-svg-sprites');
 
-gulp.task('build', function() { // Retrieves dependencies; run this first
+gulp.task('build', function() { // Retrieves dependencies; run this after install
+    /* ----------------------------------------
+    Lightning Design System
+    ---------------------------------------- */
     gulp.src('node_modules/@salesforce-ux/design-system/assets/**/*')
         .pipe(gulp.dest('assets'));
     
     gulp.src('node_modules/@salesforce-ux/design-system/scss/_design-tokens.scss')
         .pipe(gulp.dest('scss'));
     
+    /* ----------------------------------------
+    Appiphony Lightning JS
+    ---------------------------------------- */
     gulp.src('node_modules/appiphony-lightning-js/dist/**/*.js')
         .pipe(gulp.dest('js'));
     
+    /* ----------------------------------------
+    Moment.js
+    ---------------------------------------- */
     gulp.src('node_modules/moment/moment.js')
         .pipe(gulp.dest('js'));
     
     gulp.src('node_modules/moment/min/**/*.js')
         .pipe(gulp.dest('js'));
     
+    /* ----------------------------------------
+    SVG for Everybody
+    ---------------------------------------- */
     gulp.src('node_modules/svg4everybody/dist/**/*.js')
         .pipe(gulp.dest('js'));
 });
