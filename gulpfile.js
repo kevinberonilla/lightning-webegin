@@ -7,7 +7,7 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     svgSprite = require('gulp-svg-sprites');
 
-gulp.task('build', function() { // Retrieves dependencies; run this after install
+gulp.task('build', function() {
     /* ----------------------------------------
     Lightning Design System
     ---------------------------------------- */
