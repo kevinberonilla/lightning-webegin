@@ -80,4 +80,4 @@ gulp.task('watch', function() {
     gulp.watch('images/icons/**/*.svg', ['sprites']);
 });
 
-gulp.task('default', ['sass', 'cssnano', 'uglify', 'sprites', 'watch']);
+gulp.task('default', ['build', 'sass', 'cssnano', 'uglify', 'sprites', 'watch']);
