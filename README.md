@@ -8,9 +8,13 @@ Included is a <a href="http://gulpjs.com/">Gulp</a> file for handling common wat
 
 ---
 
-#### Included Dependencies
-Run `gulp build` to retrieve the latest versions of the following:
+#### Pre-installed Dependencies
 * <a href="https://jquery.com/">**jQuery**</a> by jQuery Foundation (Google CDN)
+
+---
+
+#### Retrievable Dependencies
+Run `gulp build` to retrieve the latest versions of the following:
 * <a href="http://lightningdesignsystem.com/">**Lightning Design System**</a> by Salesforce UX
 * <a href="http://aljs.appiphony.com/">**Appiphony Lightning JS**</a> by Appiphony, LLC
 * <a href="http://momentjs.com/">**Moment.js**</a> by Iskren Chernev
