@@ -112,10 +112,16 @@ body .slds .qbs-section__title {
       background-color: #f4f6f9; }
 
 body .slds .qbs-pill_container .slds-pill {
-  margin-bottom: 0.5rem;
-  margin-right: 0.25rem; }
+  margin-bottom: 0.25rem;
+  margin-right: 0.25rem;
+  float: left; }
   body .slds .qbs-pill_container .slds-pill + .slds-pill {
     margin-left: 0; }
+
+body .slds .qbs-pill_container:after {
+  content: '';
+  display: table;
+  clear: both; }
 
 /* ----------------------------------------
 Overrides

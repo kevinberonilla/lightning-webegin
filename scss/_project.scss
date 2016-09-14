@@ -120,12 +120,18 @@
         &_container {
             .#{$css-prefix} {
                 &pill {
-                    margin-bottom: $spacing-x-small;
+                    margin-bottom: $spacing-xx-small;
                     margin-right: $spacing-xx-small;
+                    float: left;
                     + .#{$css-prefix}pill {
                         margin-left: 0;
                     }
                 }
+            }
+            &:after {
+                content: '';
+                display: table;
+                clear: both;
             }
         }
     }

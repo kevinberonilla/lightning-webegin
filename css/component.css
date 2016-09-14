@@ -105,9 +105,15 @@ Project Styles
       background-color: #f4f6f9; }
 
 .THIS.slds .qbs-pill_container .slds-pill {
-  margin-bottom: 0.5rem;
-  margin-right: 0.25rem; }
+  margin-bottom: 0.25rem;
+  margin-right: 0.25rem;
+  float: left; }
   .THIS.slds .qbs-pill_container .slds-pill + .slds-pill {
     margin-left: 0; }
+
+.THIS.slds .qbs-pill_container:after {
+  content: '';
+  display: table;
+  clear: both; }
 
 /*# sourceMappingURL=component.css.map */
