@@ -23,8 +23,43 @@
                 </div>
                 <div class="slds-modal__content slds-p-around--medium qbs-overflow--visible">
                     <!-- Recipients -->
-                    <label class="slds-form-element__label" >Recipients</label>
-                    <div class="slds-m-bottom--x-small js-pill-container"></div>
+                    <label class="slds-form-element__label">Recipients</label>
+                    <div class="qbs-pill_container js-pill-container">
+                        <!-- Pre-populated Recipient -->
+                        <span id="rossbelmont" class="slds-pill">
+                            <span class="slds-icon_container slds-icon-standard-contact slds-pill__icon_container">
+                                <svg aria-hidden="true" class="slds-icon">
+                                    <use xlink:href="assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Contact</span>
+                            </span>
+                            Ross Belmont
+                            <button class="slds-button slds-button--icon slds-pill__remove slds-m-left--xx-small" data-aljs-dismiss="pill">
+                                <svg aria-hidden="true" class="slds-button__icon">
+                                    <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Remove</span>
+                            </button>
+                        </span>
+                        <!-- /Pre-populated Recipient -->
+                        <!-- Pre-populated Recipient -->
+                        <span id="kevinberonilla" class="slds-pill">
+                            <span class="slds-icon_container slds-icon-standard-contact slds-pill__icon_container">
+                                <svg aria-hidden="true" class="slds-icon">
+                                    <use xlink:href="assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Contact</span>
+                            </span>
+                            Kevin Beronilla
+                            <button class="slds-button slds-button--icon slds-pill__remove slds-m-left--xx-small" data-aljs-dismiss="pill">
+                                <svg aria-hidden="true" class="slds-button__icon">
+                                    <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Remove</span>
+                            </button>
+                        </span>
+                        <!-- /Pre-populated Recipient -->
+                    </div>
                     <div class="slds-form-element slds-lookup" data-select="single">
                         <div class="slds-form-element__control">
                             <div class="slds-input-has-icon slds-input-has-icon--right">
@@ -39,7 +74,7 @@
                 </div>
                 <div class="slds-modal__footer">
                     <button class="slds-button slds-button--neutral">Cancel</button>
-                    <button class="slds-button slds-button--neutral slds-button--brand">Send 3</button>
+                    <button class="slds-button slds-button--neutral slds-button--brand js-send">Send<span class="js-number"> 2</span></button>
                 </div>
             </div>
         </div>
@@ -51,14 +86,26 @@
     <script src="js/jquery.aljs-all.min.js"></script>
     <script>
         svg4everybody();
-
+        
         $(document).ready(function() {
             $.aljsInit({
-                scoped: true
+                scoped: true,
+                assetsLocation: '.'
             });
-
+            
+            $('body').pill();
+            
             var lookup = $('#lookup'),
-                pillContainer = $('.js-pill-container');
+                pillContainer = $('.js-pill-container'),
+                sendButton = $('.js-send'),
+                sendButtonNumber = $('.js-number'),
+                removedResults = [{
+                    id: 'rossbelmont',
+                    label: 'Ross Belmont'
+                }, {
+                    id: 'kevinberonilla',
+                    label: 'Kevin Beronilla'
+                }, ];
             
             var pillMarkup =
                 '<span class="slds-pill">' +
@@ -78,12 +125,6 @@
                 '</span>';
             
             var results = [{
-                id: 'rossbelmont',
-                label: 'Ross Belmont'
-            }, {
-                id: 'kevinberonilla',
-                label: 'Kevin Beronilla'
-            }, {
                 id: 'mikeblazek',
                 label: 'Michael Blazek'
             }, {
@@ -97,6 +138,15 @@
                 label: 'George Kenessey'
             }, ];
             
+            function checkNumOfPills() {
+                var numOfPills = $('.slds-pill', pillContainer).length;
+                
+                sendButtonNumber.text(numOfPills ? ' ' + numOfPills : '');
+                
+                if (sendButtonNumber.text().trim()) sendButton.attr('disabled', false);
+                else sendButton.attr('disabled', true);
+            }
+            
             lookup.lookup({
                 items: results,
                 onChange: function(currentSelection, isAdd) {
@@ -104,11 +154,57 @@
                         var closeButton = $('.slds-lookup .slds-pill_container .slds-pill__remove'),
                             selectionLabel = currentSelection.label.replace(/<(.*?)>/g, '');
                         
+                        removedResults.push(currentSelection);
+                        results.splice(results.indexOf(currentSelection), 1);
+                        
                         pillContainer.append(pillMarkup.replace(/{{pillLabel}}/g, selectionLabel));
                         closeButton.click();
+                        checkNumOfPills();
+                        
+                        $('.slds-pill', pillContainer).last().one('dismissed.aljs.pill', function() {
+                                var thisId = $(this).attr('id');
+                            
+                                for (var i = 0; i < removedResults.length; i++) {
+                                    if (removedResults[i].id === thisId) {
+                                        results.push(removedResults[i]);
+                                        removedResults.splice(i, 1);
+                                    }
+                                }
+                            
+                                setTimeout(function() {
+                                    checkNumOfPills();
+                                }, 10);
+                            
+                                setTimeout(function() {
+                                    lookup.focus();
+                                }, 250);
+                        })
+                            .attr('id', currentSelection.id);
                     }
-                }
+                },
+                objectIconUrl: 'assets/icons/standard-sprite/svg/symbols.svg#contact',
+                objectIconClass: 'slds-icon-standard-contact',
             });
+            
+            $('.slds-pill', pillContainer).one('dismissed.aljs.pill', function() {
+                    var thisId = $(this).attr('id');
+                
+                    for (var i = 0; i < removedResults.length; i++) {
+                        if (removedResults[i].id === thisId) {
+                            results.push(removedResults[i]);
+                            removedResults.splice(i, 1);
+                        }
+                    }
+                
+                    setTimeout(function() {
+                        checkNumOfPills();
+                    }, 10);
+                
+                    setTimeout(function() {
+                        lookup.focus();
+                    }, 250);
+            })
+                .attr('id', currentSelection.id);
         });
 
     </script>

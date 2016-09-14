@@ -104,4 +104,10 @@ Project Styles
     .THIS.slds .qbs-section__title__text--card {
       background-color: #f4f6f9; }
 
+.THIS.slds .qbs-pill_container .slds-pill {
+  margin-bottom: 0.5rem;
+  margin-right: 0.25rem; }
+  .THIS.slds .qbs-pill_container .slds-pill + .slds-pill {
+    margin-left: 0; }
+
 /*# sourceMappingURL=component.css.map */
