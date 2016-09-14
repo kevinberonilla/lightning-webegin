@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Surveys Lightning Component</title>
+    <link rel="stylesheet" href="assets/styles/salesforce-lightning-design-system.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="slds">
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid slds-m-bottom--none">
+                <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <svg aria-hidden="true" class="slds-icon slds-icon-custom-custom18 slds-icon--small">
+                            <use xlink:href="assets/icons/custom-sprite/svg/symbols.svg#custom18"></use>
+                        </svg>
+                    </div>
+                    <div class="slds-media__body slds-truncate">
+                        <h2>
+                            <a href="javascript:void(0);" class="slds-text-link--reset">
+                                <span class="slds-text-heading--small">Surveys</span>
+                            </a>
+                        </h2>
+                    </div>
+                </header>
+                <div class="slds-no-flex">
+                    <button class="slds-button slds-button--neutral">Send</button>
+                </div>
+            </div>
+            <div class="slds-card__body slds-p-horizontal--large slds-m-bottom--medium">
+                <!-- Response Set -->
+                <h4 class="slds-section__title slds-m-top--large slds-m-bottom--small qbs-section__title">
+                    <span class="qbs-section__title__text qbs-section__title__text--card">
+                        <span class="slds-avatar slds-avatar--small slds-avatar--circle">
+                            <img src="assets/images/avatar2.jpg" alt="person name" />
+                        </span>
+                        <span class="slds-p-left--xx-small slds-vertical-align--bottom"><a href="javascript:void(0);">Mandy Manager</a> sent 2 on Oct 15</span>
+                    </span>
+                </h4>
+                <!-- Response Empty State -->
+                <div class="slds-text-align--center slds-p-top--medium slds-p-bottom--xx-small qbs-opacity--50">No responses.</div>
+                <!-- /Response Empty State -->
+                <!-- /Response Set -->
+                <!-- Response Set -->
+                <h4 class="slds-section__title slds-m-top--large slds-m-bottom--small qbs-section__title">
+                    <span class="qbs-section__title__text qbs-section__title__text--card">
+                        <span class="slds-avatar slds-avatar--small slds-avatar--circle">
+                            <img src="assets/images/avatar1.jpg" alt="person name" />
+                        </span>
+                        <span class="slds-p-left--xx-small slds-vertical-align--bottom"><a href="javascript:void(0);">Sal Salesrep</a> sent 5 on Sep 30</span>
+                    </span>
+                </h4>
+                <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                    <!-- Response -->
+                    <div class="slds-col slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3 slds-col--padded slds-m-top--small">
+                        <div class="slds-box qbs-response-card">
+                            <!-- Response Header -->
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <div class="slds-icon_container">
+                                        <svg aria-hidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small">
+                                            <use xlink:href="assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Contact</span>
+                                    </div>
+                                </div>
+                                <div class="slds-media__body slds-p-top--xxx-small">
+                                    <div class="slds-grid slds-grid--align-spread slds-has-flexi-truncate">
+                                        <h3 class="slds-truncate" title="Victor Carreon"><a href="javascript:void(0);">Victor Carreon</a></h3>
+                                        <div class="slds-shrink-none slds-text-heading--label-normal">Oct 2</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Response Header -->
+                            <hr class="slds-m-top--medium slds-m-bottom--xx-small" />
+                            <!-- Response Body -->
+                            <div class="slds-clearfix slds-text-color--weak">
+                                <!-- Score -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Pre-call prep</p>
+                                    <p class="qbs-score qbs-score--large">10</p>
+                                </div>
+                                <!-- /Score -->
+                                <!-- Average -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Professionalism</p>
+                                    <p class="qbs-score qbs-score--small">
+                                        4.3
+                                        <span class="qbs-score--graph">
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 83.333%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 83.333%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--low" style="height: 33.333%;"></span>
+                                            <span class="qbs-score--graph__bar" style="height: 50%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 100%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 83.333%;"></span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <!-- /Average -->
+                                <!-- Answer -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Demonstrated use cases? <strong>No</strong></p>
+                                </div>
+                                <!-- /Answer -->
+                            </div>
+                            <!-- /Response Body -->
+                        </div>
+                    </div>
+                    <!-- /Response -->
+                    <!-- Response -->
+                    <div class="slds-col slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3 slds-col--padded slds-m-top--small">
+                        <div class="slds-box qbs-response-card">
+                            <!-- Response Header -->
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <div class="slds-icon_container">
+                                        <svg aria-hidden="true" class="slds-icon slds-icon-standard-lead slds-icon--small">
+                                            <use xlink:href="assets/icons/standard-sprite/svg/symbols.svg#lead"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Contact</span>
+                                    </div>
+                                </div>
+                                <div class="slds-media__body slds-p-top--xxx-small">
+                                    <div class="slds-grid slds-grid--align-spread slds-has-flexi-truncate">
+                                        <h3 class="slds-truncate" title="Stanley Chui"><a href="javascript:void(0);">Stanley Chui</a></h3>
+                                        <div class="slds-shrink-none slds-text-heading--label-normal">Sep 30</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Response Header -->
+                            <hr class="slds-m-top--medium slds-m-bottom--xx-small" />
+                            <!-- Response Body -->
+                            <div class="slds-clearfix slds-text-color--weak">
+                                <!-- Score -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Pre-call prep</p>
+                                    <p class="qbs-score qbs-score--large">8</p>
+                                </div>
+                                <!-- /Score -->
+                                <!-- Average -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Professionalism</p>
+                                    <p class="qbs-score qbs-score--small">
+                                        4.7
+                                        <span class="qbs-score--graph">
+                                            <span class="qbs-score--graph__bar" style="height: 50%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 83.333%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 100%;"></span>
+                                            <span class="qbs-score--graph__bar" style="height: 50%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 100%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 83.333%;"></span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <!-- /Average -->
+                                <!-- Answer -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Demonstrated use cases? <strong>Yes</strong></p>
+                                </div>
+                                <!-- /Answer -->
+                            </div>
+                            <!-- /Response Body -->
+                        </div>
+                    </div>
+                    <!-- /Response -->
+                </div>
+                <!-- /Response Set -->
+                <!-- Response Set -->
+                <h4 class="slds-section__title slds-m-top--large slds-m-bottom--small qbs-section__title">
+                    <span class="qbs-section__title__text qbs-section__title__text--card">
+                        <span class="slds-avatar slds-avatar--small slds-avatar--circle">
+                            <img src="assets/images/avatar1.jpg" alt="person name" />
+                        </span>
+                        <span class="slds-p-left--xx-small slds-vertical-align--bottom"><a href="javascript:void(0);">Sal Salesrep</a> sent 5 on Sep 15</span>
+                    </span>
+                </h4>
+                <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                    <!-- Response -->
+                    <div class="slds-col slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3 slds-col--padded slds-m-top--small">
+                        <div class="slds-box qbs-response-card">
+                            <!-- Response Header -->
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <div class="slds-icon_container">
+                                        <svg aria-hidden="true" class="slds-icon slds-icon-standard-lead slds-icon--small">
+                                            <use xlink:href="assets/icons/standard-sprite/svg/symbols.svg#lead"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Contact</span>
+                                    </div>
+                                </div>
+                                <div class="slds-media__body slds-p-top--xxx-small">
+                                    <div class="slds-grid slds-grid--align-spread slds-has-flexi-truncate">
+                                        <h3 class="slds-truncate" title="Ross Belmont"><a href="javascript:void(0);">Ross Belmont</a></h3>
+                                        <div class="slds-shrink-none slds-text-heading--label-normal">Sep 22</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Response Header -->
+                            <hr class="slds-m-top--medium slds-m-bottom--xx-small" />
+                            <!-- Response Body -->
+                            <div class="slds-clearfix slds-text-color--weak">
+                                <!-- Score -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Pre-call prep</p>
+                                    <p class="qbs-score qbs-score--large">8</p>
+                                </div>
+                                <!-- /Score -->
+                                <!-- Average -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Professionalism</p>
+                                    <p class="qbs-score qbs-score--small">
+                                        3.8
+                                        <span class="qbs-score--graph">
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 83.333%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 100%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 83.333%;"></span>
+                                            <span class="qbs-score--graph__bar" style="height: 50%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--low" style="height: 16.667%;"></span>
+                                            <span class="qbs-score--graph__bar" style="height: 50%;"></span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <!-- /Average -->
+                                <!-- Answer -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Demonstrated use cases? <strong>Yes</strong></p>
+                                </div>
+                                <!-- /Answer -->
+                            </div>
+                            <!-- /Response Body -->
+                        </div>
+                    </div>
+                    <!-- /Response -->
+                    <!-- Response -->
+                    <div class="slds-col slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3 slds-col--padded slds-m-top--small">
+                        <div class="slds-box qbs-response-card">
+                            <!-- Response Header -->
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <div class="slds-icon_container">
+                                        <svg aria-hidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small">
+                                            <use xlink:href="assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Contact</span>
+                                    </div>
+                                </div>
+                                <div class="slds-media__body slds-p-top--xxx-small">
+                                    <div class="slds-grid slds-grid--align-spread slds-has-flexi-truncate">
+                                        <h3 class="slds-truncate" title="Kevin Beronilla"><a href="javascript:void(0);">Kevin Beronilla</a></h3>
+                                        <div class="slds-shrink-none slds-text-heading--label-normal">Sep 21</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Response Header -->
+                            <hr class="slds-m-top--medium slds-m-bottom--xx-small" />
+                            <!-- Response Body -->
+                            <div class="slds-clearfix slds-text-color--weak">
+                                <!-- Score -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Pre-call prep</p>
+                                    <p class="qbs-score qbs-score--large">6</p>
+                                </div>
+                                <!-- /Score -->
+                                <!-- Average -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Professionalism</p>
+                                    <p class="qbs-score qbs-score--small">
+                                        5.0
+                                        <span class="qbs-score--graph">
+                                            <span class="qbs-score--graph__bar" style="height: 66.667%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 83.333%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 100%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 100%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 100%;"></span>
+                                            <span class="qbs-score--graph__bar" style="height: 50%;"></span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <!-- /Average -->
+                                <!-- Answer -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Demonstrated use cases? <strong>Yes</strong></p>
+                                </div>
+                                <!-- /Answer -->
+                            </div>
+                            <!-- /Response Body -->
+                        </div>
+                    </div>
+                    <!-- /Response -->
+                    <!-- Response -->
+                    <div class="slds-col slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3 slds-col--padded slds-m-top--small">
+                        <div class="slds-box qbs-response-card">
+                            <!-- Response Header -->
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <div class="slds-icon_container">
+                                        <svg aria-hidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small">
+                                            <use xlink:href="assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Contact</span>
+                                    </div>
+                                </div>
+                                <div class="slds-media__body slds-p-top--xxx-small">
+                                    <div class="slds-grid slds-grid--align-spread slds-has-flexi-truncate">
+                                        <h3 class="slds-truncate" title="Nicole Shaw"><a href="javascript:void(0);">Nicole Shaw</a></h3>
+                                        <div class="slds-shrink-none slds-text-heading--label-normal">Sep 21</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Response Header -->
+                            <hr class="slds-m-top--medium slds-m-bottom--xx-small" />
+                            <!-- Response Body -->
+                            <div class="slds-clearfix slds-text-color--weak">
+                                <!-- Score -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Pre-call prep</p>
+                                    <p class="qbs-score qbs-score--large">7</p>
+                                </div>
+                                <!-- /Score -->
+                                <!-- Average -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Professionalism</p>
+                                    <p class="qbs-score qbs-score--small">
+                                        5.0
+                                        <span class="qbs-score--graph">
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 83.333%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 83.333%;"></span>
+                                            <span class="qbs-score--graph__bar" style="height: 50%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 100%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 100%;"></span>
+                                            <span class="qbs-score--graph__bar qbs-score--graph__bar--high" style="height: 83.333%;"></span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <!-- /Average -->
+                                <!-- Answer -->
+                                <div class="slds-float--left slds-size--1-of-2 slds-m-top--small">
+                                    <p class="slds-text-heading--label-normal">Demonstrated use cases? <strong>Yes</strong></p>
+                                </div>
+                                <!-- /Answer -->
+                            </div>
+                            <!-- /Response Body -->
+                        </div>
+                    </div>
+                    <!-- /Response -->
+                </div>
+                <!-- /Response Set -->
+            </div>
+        </article>
+    </div>
+    <script src="js/svg4everybody.min.js"></script>
+    <script>
+        svg4everybody();
+    </script>
+</body>
+
+</html>

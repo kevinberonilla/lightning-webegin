@@ -1,1 +1,119 @@
-// Place your project-specific styles here
+.qbs {
+    &-opacity {
+        &--75 {
+            opacity: 0.75;
+        }
+        &--50 {
+            opacity: 0.5;
+        }
+        &--25 {
+            opacity: 0.25;
+        }
+        &--0 {
+            opacity: 0;
+        }
+    }
+    &-overflow {
+        &--hidden {
+            overflow: hidden;
+        }
+        &--visible {
+            overflow: visible;
+        }
+        &--auto {
+            overflow: auto;
+        }
+    }
+    &-response {
+        &-card {
+            display: block;
+            background-color: white;
+            cursor: pointer;
+            transition: color 0.05s linear, background-color 0.05s linear;
+            &:hover {
+                background-color: $color-background-button-default-active;
+            }
+        }
+    }
+    &-text {
+        &-color {
+            &--success {
+                color: $color-text-success;
+            }
+            &--success-light {
+                color: $color-background-success;
+            }
+            &--warning {
+                color: $color-text-warning;
+            }
+            &--error {
+                color: $color-text-error;
+            }
+        }
+    }
+    &-score {
+        display: inline-block;
+        font-weight: 700;
+        &--small {
+            font-size: 1.75rem;
+            line-height: 1rem;
+            margin-top: 0.6rem;
+        }
+        &--large {
+            font-size: 4.75rem;
+            line-height: 4rem;
+            margin-top: .65rem;
+            letter-spacing: -2px;
+        }
+        &--graph {
+            display: inline-block;
+            height: 20px;
+            position: relative;
+            transform: rotateX(-180deg);
+            backface-visibility: visible;
+            &:after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+            &__bar {
+                float: left;
+                display: inline-block;
+                width: 5px;
+                margin: 0 1px 0 0;
+                background-color: $color-background-toggle;
+                position: relative;
+                bottom: 0;
+                &--low {
+                    background-color: $color-background-destructive;
+                }
+                &--high {
+                    background-color: $color-background-success;
+                }
+            }
+        }
+    }
+    &-section {
+        &__title {
+            position: relative;
+            &:before {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                left: 0;
+                margin-top: -1px;
+                border-bottom: 1px dashed rgb(216, 221, 230);
+                content: '';
+            }
+            &__text {
+                display: inline-block;
+                padding-right: 0.5rem;
+                position: relative;
+                font-size: 0.8rem;
+                &--card {
+                    background-color: $color-background;
+                }
+            }
+        }
+    }
+}
