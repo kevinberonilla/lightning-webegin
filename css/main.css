@@ -61,12 +61,12 @@ body .slds .qbs-score {
   font-weight: 700; }
   body .slds .qbs-score--small {
     font-size: 1.75rem;
-    line-height: 1rem;
-    margin-top: 0.6rem; }
+    line-height: 1.5rem;
+    margin-top: 0.25rem; }
   body .slds .qbs-score--large {
-    font-size: 4.75rem;
-    line-height: 4rem;
-    margin-top: .65rem;
+    font-size: 5rem;
+    line-height: 3.75rem;
+    margin-top: 0.7rem;
     letter-spacing: -2px; }
   body .slds .qbs-score--graph {
     display: inline-block;
