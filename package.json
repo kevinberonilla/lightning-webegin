@@ -1,7 +1,7 @@
 {
-  "name": "lightning-webegin",
+  "name": "questback-mockups",
   "version": "1.0.0",
-  "description": "A bare-bones web development starting point with extended styles for Lightning.",
+  "description": "",
   "main": "gulpfile.js",
   "dependencies": {
     "gulp": "^3.9.0"
