@@ -54,7 +54,9 @@ gulp.task('sass', function() {
 gulp.task('cssnano', function() {
     return gulp.src(['css/**/*.css', '!css/**/*.min.css'])
         .pipe(rename({ suffix: '.min' }))
-        .pipe(cssnano())
+        .pipe(cssnano({
+            discardUnused: { fontFace: false }
+        }))
         .pipe(gulp.dest('css'));
 });
 
