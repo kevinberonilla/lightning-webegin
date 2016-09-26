@@ -1,8 +1,10 @@
 html,
-body:not(.sfdcBody),
 .noSidebarCell,
 .sidebarCell .fixed {
     margin: 0 !important;
+    padding: 0 !important;
+}
+body.sfdcBody {
     padding: 0 !important;
 }
 
