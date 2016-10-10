@@ -2,10 +2,12 @@ html,
 .noSidebarCell,
 .sidebarCell .fixed {
   margin: 0 !important;
-  padding: 0 !important; }
+  padding: 0 !important;
+}
 
 body.sfdcBody {
-  padding: 0 !important; }
+  padding: 0 !important;
+}
 
 /* ----------------------------------------
 SLDS Design Tokens
@@ -23,30 +25,37 @@ Overrides
   border: 1px solid #d8dde6;
   border-radius: 0.25rem;
   box-shadow: none;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 a.cke_button {
   height: 26px;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .cke_toolgroup {
   border: 1px solid #d8dde6;
   background: white;
-  box-shadow: none; }
+  box-shadow: none;
+}
 
 a.cke_button_off:hover, a.cke_button_off:focus, a.cke_button_off:active, a.cke_button_disabled:hover, a.cke_button_disabled:focus, a.cke_button_disabled:active {
   background: #f4f6f9;
-  box-shadow: none; }
+  box-shadow: none;
+}
 
 .cke_button_on {
   background: #eef1f6;
-  box-shadow: none; }
+  box-shadow: none;
+}
 
 .cke_top {
   background: #f4f6f9;
-  border-bottom: 1px solid #d8dde6; }
+  border-bottom: 1px solid #d8dde6;
+}
 
 .cke_toolbar:nth-child(3), .cke_toolbar:nth-child(4), .cke_toolbar:nth-child(5) .cke_toolgroup a:nth-child(3), .cke_toolbar:nth-child(5) .cke_toolgroup a:nth-child(4) {
-  display: none; }
+  display: none;
+}
 
 /*# sourceMappingURL=main.css.map */
