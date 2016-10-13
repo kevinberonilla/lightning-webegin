@@ -10,12 +10,24 @@ var gulp = require('gulp'),
 
 gulp.task('build', function() {
     /* ----------------------------------------
-    Lightning Design System
+    Salesforce Lightning Design System
     ---------------------------------------- */
     gulp.src('node_modules/@salesforce-ux/design-system/assets/**/*')
         .pipe(gulp.dest('assets'));
     
     gulp.src('node_modules/@salesforce-ux/design-system/scss/_design-tokens.scss')
+        .pipe(gulp.dest('scss'));
+    
+    /* ----------------------------------------
+    Component Token Map
+    ---------------------------------------- */
+    gulp.src('scss/_design-tokens.scss')
+        .pipe(replace(/(\$(.*?): )(?:.*?);/g, function(match, groupOne, groupTwo) {
+            var camelCaseValue = groupTwo.replace(/-([a-z])/g, function(match, character) { return character ? character.toUpperCase() : ''; });
+            
+            return groupOne + 't(' + camelCaseValue + ');';
+        }))
+        .pipe(rename({ basename: '_design-tokens-map' }))
         .pipe(gulp.dest('scss'));
     
     /* ----------------------------------------
@@ -43,9 +55,7 @@ gulp.task('build', function() {
 gulp.task('sass', function() {
     return gulp.src('scss/*.scss')
         .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }).on('error', sass.logError))
+        .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 5 versions', '> 5%', 'ie 9', 'ie 8'],
             cascade: false
@@ -54,49 +64,10 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('css'));
 });
 
-//gulp.task('add-qa-locators', function() {
-//    return gulp.src('qa-processing/**/*.html')
-//        .pipe(dom(function() {
-//            var document = this,
-//            qaLocators = [
-//                ['.slds-text-heading--label:not(.slds-list__item) + *:not(.slds-text-heading--medium):not(.slds-grid)', 'data-qa-display-value'],
-//                ['.slds-notify, .slds-text-heading--label:not(.slds-list__item), label, legend, .slds-text-heading--small, .slds-text-heading--medium, .slds-text-heading--large, .slds-text-heading--label:not(.slds-tabs--default__item):not(.slds-tabs--scoped__item)', 'data-qa-label'],
-//                ['a:not(.slds-button):not(.slds-tabs--default__link):not(.slds-tabs--scoped__link)', 'data-qa-link'],
-//                ['button, .slds-tabs--default__link, .slds-tabs--scoped__link, .slds-has-list-interactions > .slds-list__item', 'data-qa-button'],
-//                ['input:not([type="radio"]):not([type="checkbox"]), textarea', 'data-qa-input'],
-//                ['select, .slds-picklist:not(.slds-picklist--multi) > .slds-button:first-child, .slds-dropdown-trigger > .slds-button:first-child', 'data-qa-select'],
-//                ['input[type="radio"], input[type="checkbox"]', 'data-qa-checkbox'],
-//                ['.slds-box, .slds-card, .slds-modal, .slds-modal__header, .slds-modal__content, .slds-modal__footer, .slds-tabs--default__content, .slds-tabs--scoped__content', 'data-qa-section']
-//            ];
-//        
-//            String.prototype.camelize = function() {
-//                return this.replace(/(?:[-_ ])(\w)/g, function(_, character) {
-//                    return character ? character.toUpperCase() : '';
-//                });
-//            }
-//            
-//            function createQaLocators(selector, dataAttribute) {
-//                Array.prototype.forEach.call(document.querySelectorAll(selector), function(el) {
-//                    var value = (el.id) ? (el.id).camelize() : 'defaultValue';
-//                    if (!el.hasAttribute(dataAttribute)) { el.setAttribute(dataAttribute, value); }
-//                });
-//            }
-//            
-//            for (i = 0; i < qaLocators.length; i++) {
-//                createQaLocators(qaLocators[i][0], qaLocators[i][1]);
-//            }
-//        
-//            return document;
-//        }))
-//        .pipe(gulp.dest('qa-processing'));
-//});
-
 gulp.task('cssnano', function() {
     return gulp.src(['css/**/*.css', '!css/**/*.min.css'])
         .pipe(rename({ suffix: '.min' }))
-        .pipe(cssnano({
-            discardUnused: { fontFace: false }
-        }))
+        .pipe(cssnano({ discardUnused: { fontFace: false } }))
         .pipe(gulp.dest('css'));
 });
 
@@ -109,9 +80,7 @@ gulp.task('uglify', function() {
 
 gulp.task('sprites', function () {
     return gulp.src('images/icons/*.svg')
-        .pipe(svgSprite({
-            mode: 'symbols'
-        }))
+        .pipe(svgSprite({ mode: 'symbols' }))
         .pipe(gulp.dest('images'));
 });
 

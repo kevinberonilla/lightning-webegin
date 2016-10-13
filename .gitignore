@@ -35,4 +35,5 @@ node_modules
 # Dependencies
 assets
 scss/_design-tokens.scss
+scss/_design-tokens-map.scss
 js
