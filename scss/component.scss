@@ -11,6 +11,6 @@ Partials
 /* ----------------------------------------
 Project Styles
 ---------------------------------------- */
-.THIS.slds {
+.THIS.#{$scope} {
     @import 'project';
 }
