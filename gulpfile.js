@@ -6,22 +6,23 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     autoprefixer = require('gulp-autoprefixer'),
-    svgSprite = require('gulp-svg-sprites');
+    svgSprites = require('gulp-svg-sprites'),
+    mergeStream = require('merge-stream');
 
 gulp.task('build', function() {
     /* ----------------------------------------
     Salesforce Lightning Design System
     ---------------------------------------- */
-    gulp.src('node_modules/@salesforce-ux/design-system/assets/**/*')
+    var slds = gulp.src('node_modules/@salesforce-ux/design-system/assets/**/*')
         .pipe(gulp.dest('assets'));
     
-    gulp.src('node_modules/@salesforce-ux/design-system/scss/_design-tokens.scss')
+    var tokens = gulp.src('node_modules/@salesforce-ux/design-system/scss/_design-tokens.scss')
         .pipe(gulp.dest('scss'));
     
     /* ----------------------------------------
     Component Token Map
     ---------------------------------------- */
-    gulp.src('scss/_design-tokens.scss')
+    var tokenMap = gulp.src('scss/_design-tokens.scss')
         .pipe(replace(/(\$(.*?): )(?:.*?);/g, function(match, groupOne, groupTwo) {
             var camelCaseValue = groupTwo.replace(/-([a-z])/g, function(match, character) { return character ? character.toUpperCase() : ''; });
             
@@ -33,23 +34,25 @@ gulp.task('build', function() {
     /* ----------------------------------------
     Appiphony Lightning JS
     ---------------------------------------- */
-    gulp.src('node_modules/appiphony-lightning-js/dist/**/*.js')
+    var aljs = gulp.src('node_modules/appiphony-lightning-js/dist/**/*.js')
         .pipe(gulp.dest('js'));
     
     /* ----------------------------------------
     Moment.js
     ---------------------------------------- */
-    gulp.src('node_modules/moment/moment.js')
+    var momentMain = gulp.src('node_modules/moment/moment.js')
         .pipe(gulp.dest('js'));
     
-    gulp.src('node_modules/moment/min/**/*.js')
+    var momentMisc = gulp.src('node_modules/moment/min/**/*.js')
         .pipe(gulp.dest('js'));
     
     /* ----------------------------------------
     SVG for Everybody
     ---------------------------------------- */
-    gulp.src('node_modules/svg4everybody/dist/**/*.js')
+    var svg4everybody = gulp.src('node_modules/svg4everybody/dist/**/*.js')
         .pipe(gulp.dest('js'));
+    
+    return mergeStream(slds, tokens, tokenMap, aljs, momentMain, momentMisc, svg4everybody);
 });
 
 gulp.task('sass', ['build'], function() {
@@ -80,7 +83,7 @@ gulp.task('uglify', function() {
 
 gulp.task('sprites', function () {
     return gulp.src('images/icons/*.svg')
-        .pipe(svgSprite({ mode: 'symbols' }))
+        .pipe(svgSprites({ mode: 'symbols' }))
         .pipe(gulp.dest('images'));
 });
 

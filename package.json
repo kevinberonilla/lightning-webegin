@@ -17,6 +17,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-svg-sprites": "^4.0.2",
     "gulp-uglify": "^2.0.0",
+    "merge-stream": "^1.0.0",
     "moment": "^2.15.0",
     "svg4everybody": "^2.1.0"
   },
