@@ -52,7 +52,7 @@ gulp.task('build', function() {
         .pipe(gulp.dest('js'));
 });
 
-gulp.task('sass', function() {
+gulp.task('sass', ['build'], function() {
     return gulp.src('scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
@@ -91,4 +91,4 @@ gulp.task('watch', function() {
     gulp.watch('images/icons/**/*.svg', ['sprites']);
 });
 
-gulp.task('default', ['build', 'sass', 'cssnano', 'uglify', 'sprites', 'watch']);
+gulp.task('default', ['sass', 'cssnano', 'uglify', 'sprites', 'watch']);
