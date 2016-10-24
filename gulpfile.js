@@ -82,9 +82,9 @@ gulp.task('uglify', function() {
 });
 
 gulp.task('sprites', function () {
-    return gulp.src('images/icons/*.svg')
+    return gulp.src('images/icons/project/*.svg')
         .pipe(svgSprites({ mode: 'symbols' }))
-        .pipe(gulp.dest('images'));
+        .pipe(gulp.dest('images/icons/project-sprite'));
 });
 
 gulp.task('watch', function() {
