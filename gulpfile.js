@@ -96,5 +96,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['build'], function() {
-    runSequence('sass', ['cssnano', 'uglify', 'sprites'], 'watch');
+    runSequence('sass', ['cssnano', 'uglify', 'sprites', 'watch']);
 });
