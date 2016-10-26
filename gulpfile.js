@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     autoprefixer = require('gulp-autoprefixer'),
     svgSprites = require('gulp-svg-sprites'),
-    mergeStream = require('merge-stream');
+    mergeStream = require('merge-stream'),
+    runSequence = require('run-sequence');
 
 gulp.task('build', function() {
     /* ----------------------------------------
@@ -55,7 +56,7 @@ gulp.task('build', function() {
     return mergeStream(slds, tokens, tokenMap, aljs, momentMain, momentMisc, svg4everybody);
 });
 
-gulp.task('sass', ['build'], function() {
+gulp.task('sass', function() {
     return gulp.src('scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
@@ -87,11 +88,11 @@ gulp.task('sprites', function () {
         .pipe(gulp.dest('images/icons/project-sprite'));
 });
 
-gulp.task('watch', function() {
+gulp.task('default', ['build'], function() {
+    runSequence(['sass', 'cssnano', 'uglify', 'sprites']);
+    
     gulp.watch('scss/**/*.scss', ['sass']);
     gulp.watch(['css/**/*.css', '!css/**/*.min.css'], ['cssnano']);
     gulp.watch(['js/**/*.js', '!js/**/*.min.js'], ['uglify']);
     gulp.watch('images/icons/**/*.svg', ['sprites']);
 });
-
-gulp.task('default', ['sass', 'cssnano', 'uglify', 'sprites', 'watch']);
