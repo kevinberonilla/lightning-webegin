@@ -88,11 +88,13 @@ gulp.task('sprites', function () {
         .pipe(gulp.dest('images/icons/project-sprite'));
 });
 
-gulp.task('default', ['build'], function() {
-    runSequence(['sass', 'cssnano', 'uglify', 'sprites']);
-    
+gulp.task('watch', function() {
     gulp.watch('scss/**/*.scss', ['sass']);
     gulp.watch(['css/**/*.css', '!css/**/*.min.css'], ['cssnano']);
     gulp.watch(['js/**/*.js', '!js/**/*.min.js'], ['uglify']);
     gulp.watch('images/icons/**/*.svg', ['sprites']);
+});
+
+gulp.task('default', ['build'], function() {
+    runSequence('sass', ['cssnano', 'uglify', 'sprites'], 'watch');
 });
