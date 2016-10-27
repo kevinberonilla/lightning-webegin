@@ -21,18 +21,6 @@ gulp.task('build', function() {
         .pipe(gulp.dest('scss'));
     
     /* ----------------------------------------
-    Component Token Map
-    ---------------------------------------- */
-    var tokenMap = gulp.src('scss/_design-tokens.scss')
-        .pipe(replace(/(\$(.*?): )(?:.*?);/g, function(match, groupOne, groupTwo) {
-            var camelCaseValue = groupTwo.replace(/-([a-z])/g, function(match, character) { return character ? character.toUpperCase() : ''; });
-            
-            return groupOne + 't(' + camelCaseValue + ');';
-        }))
-        .pipe(rename({ basename: '_design-tokens-map' }))
-        .pipe(gulp.dest('scss'));
-    
-    /* ----------------------------------------
     Appiphony Lightning JS
     ---------------------------------------- */
     var aljs = gulp.src('node_modules/appiphony-lightning-js/dist/**/*.js')
@@ -53,7 +41,18 @@ gulp.task('build', function() {
     var svg4everybody = gulp.src('node_modules/svg4everybody/dist/**/*.js')
         .pipe(gulp.dest('js'));
     
-    return mergeStream(slds, tokens, tokenMap, aljs, momentMain, momentMisc, svg4everybody);
+    return mergeStream(slds, tokens, aljs, momentMain, momentMisc, svg4everybody);
+});
+
+gulp.task('tokenMap', function() {
+    return gulp.src('scss/_design-tokens.scss')
+        .pipe(replace(/(\$(.*?): )(?:.*?);/g, function(match, groupOne, groupTwo) {
+            var camelCaseValue = groupTwo.replace(/-([a-z])/g, function(match, character) { return character ? character.toUpperCase() : ''; });
+            
+            return groupOne + 't(' + camelCaseValue + ');';
+        }))
+        .pipe(rename({ basename: '_design-tokens-map' }))
+        .pipe(gulp.dest('scss'));
 });
 
 gulp.task('sass', function() {
@@ -96,5 +95,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['build'], function() {
-    runSequence('sass', ['cssnano', 'uglify', 'sprites', 'watch']);
+    runSequence('tokenMap', 'sass', ['cssnano', 'uglify', 'sprites', 'watch']);
 });
