@@ -8,14 +8,16 @@ Partials
 ---------------------------------------- */
 @import 'variables';
 
-/* ----------------------------------------
-Project Styles
----------------------------------------- */
 body .#{$scope} {
+    /* ----------------------------------------
+    Project Styles
+    ---------------------------------------- */
     @import 'project';
+    
+    /* ----------------------------------------
+    Overrides
+    ---------------------------------------- */
+    /*@import 'overrides/plugin-one',
+        'overrides/plugin-two',
+        'overrides/plugin-three';*/
 }
-
-/* ----------------------------------------
-Overrides
----------------------------------------- */
-//@import 'overrides/plugin-one', 'overrides/plugin-two', 'overrides/plugin-three';
