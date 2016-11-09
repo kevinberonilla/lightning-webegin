@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "A bare-bones web development starting point with extended styles for Lightning.",
   "main": "gulpfile.js",
-  "dependencies": {
-    "gulp": "^3.9.0"
-  },
   "devDependencies": {
     "@salesforce-ux/design-system": "^2.1.2",
     "appiphony-lightning-js": "^2.0.1",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-rename": "^1.2.2",
