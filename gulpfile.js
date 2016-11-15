@@ -95,5 +95,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['build'], function() {
-    runSequence('tokenMap', 'sass', ['cssnano', 'uglify', 'sprites', 'watch']);
+    return runSequence('tokenMap', 'sass', ['cssnano', 'uglify', 'sprites', 'watch']);
 });
