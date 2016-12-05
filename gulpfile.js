@@ -27,21 +27,12 @@ gulp.task('build', function() {
         .pipe(gulp.dest('js'));
     
     /* ----------------------------------------
-    Moment.js
-    ---------------------------------------- */
-    var momentMain = gulp.src('node_modules/moment/moment.js')
-        .pipe(gulp.dest('js'));
-    
-    var momentMisc = gulp.src('node_modules/moment/min/**/*.js')
-        .pipe(gulp.dest('js'));
-    
-    /* ----------------------------------------
     SVG for Everybody
     ---------------------------------------- */
     var svg4everybody = gulp.src('node_modules/svg4everybody/dist/**/*.js')
         .pipe(gulp.dest('js'));
     
-    return mergeStream(slds, tokens, aljs, momentMain, momentMisc, svg4everybody);
+    return mergeStream(slds, tokens, aljs, svg4everybody);
 });
 
 gulp.task('tokenMap', function() {
