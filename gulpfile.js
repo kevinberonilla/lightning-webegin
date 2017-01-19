@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     replace = require('gulp-replace'),
+    sassGlob = require('gulp-sass-glob'),
     sass = require('gulp-sass'),
     cssnano = require('gulp-cssnano'),
     uglify = require('gulp-uglify'),
@@ -17,8 +18,8 @@ gulp.task('build', function() {
     var slds = gulp.src('node_modules/@salesforce-ux/design-system/assets/**/*')
         .pipe(gulp.dest('assets'));
     
-    var tokens = gulp.src('node_modules/@salesforce-ux/design-system/scss/_design-tokens.scss')
-        .pipe(gulp.dest('scss'));
+    var tokens = gulp.src(['node_modules/@salesforce-ux/design-system/design-tokens/dist/**/*.default.scss', '!node_modules/@salesforce-ux/design-system/design-tokens/dist/force-font-commons.default.scss'])
+        .pipe(gulp.dest('design-tokens'));
     
     /* ----------------------------------------
     Appiphony Lightning JS
@@ -35,20 +36,20 @@ gulp.task('build', function() {
     return mergeStream(slds, tokens, aljs, svg4everybody);
 });
 
-gulp.task('tokenMap', function() {
-    return gulp.src('scss/_design-tokens.scss')
+gulp.task('tokenMaps', function() {
+    return gulp.src('design-tokens/**/*')
         .pipe(replace(/(\$(.*?): )(?:.*?);/g, function(match, groupOne, groupTwo) {
             var camelCaseValue = groupTwo.replace(/-([a-z])/g, function(match, character) { return character ? character.toUpperCase() : ''; });
             
             return groupOne + 't(' + camelCaseValue + ');';
         }))
-        .pipe(rename({ basename: '_design-tokens-map' }))
-        .pipe(gulp.dest('scss'));
+        .pipe(gulp.dest('design-token-maps'));
 });
 
 gulp.task('sass', function() {
     return gulp.src('scss/*.scss')
         .pipe(sourcemaps.init())
+        .pipe(sassGlob())
         .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 5 versions', '> 5%', 'ie 9', 'ie 8'],
@@ -86,5 +87,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['build'], function() {
-    return runSequence('tokenMap', 'sass', ['cssnano', 'uglify', 'sprites', 'watch']);
+    return runSequence('tokenMaps', 'sass', ['cssnano', 'uglify', 'sprites', 'watch']);
 });
