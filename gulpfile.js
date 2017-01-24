@@ -19,7 +19,8 @@ gulp.task('build', function() {
         .pipe(gulp.dest('assets'));
     
     var tokens = gulp.src(['node_modules/@salesforce-ux/design-system/design-tokens/dist/**/*.default.scss', '!node_modules/@salesforce-ux/design-system/design-tokens/dist/force-font-commons.default.scss'])
-        .pipe(gulp.dest('design-tokens'));
+        .pipe(rename({ prefix: '_' }))
+        .pipe(gulp.dest('scss/design-tokens'));
     
     /* ----------------------------------------
     Appiphony Lightning JS
@@ -37,13 +38,13 @@ gulp.task('build', function() {
 });
 
 gulp.task('tokenMaps', function() {
-    return gulp.src('design-tokens/**/*')
+    return gulp.src('scss/design-tokens/**/*')
         .pipe(replace(/(\$(.*?): )(?:.*?);/g, function(match, groupOne, groupTwo) {
             var camelCaseValue = groupTwo.replace(/-([a-z])/g, function(match, character) { return character ? character.toUpperCase() : ''; });
             
             return groupOne + 't(' + camelCaseValue + ');';
         }))
-        .pipe(gulp.dest('design-token-maps'));
+        .pipe(gulp.dest('scss/design-token-maps'));
 });
 
 gulp.task('sass', function() {
