@@ -14,7 +14,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-sass-glob": "^1.0.8",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-svg-sprites": "^4.0.2",
+    "gulp-svg-sprites": "^4.1.1",
     "gulp-uglify": "^2.0.0",
     "merge-stream": "^1.0.0",
     "run-sequence": "^1.2.2",
