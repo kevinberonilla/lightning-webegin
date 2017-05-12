@@ -1,5 +1,5 @@
 # Webegin for Lightning
-A bare-bones web development starting point with extended styles and scripts for Salesforce Lightning.
+A bare-bones web development template with extended styles and scripts for Salesforce Lightning.
 
 ---
 
