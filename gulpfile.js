@@ -39,7 +39,7 @@ gulp.task('build', function() {
 
 gulp.task('tokenMaps', function() {
     return gulp.src('scss/design-tokens/**/*')
-        .pipe(replace(/(\$(.*?): )(?:.*?);/g, function(match, groupOne, groupTwo) {
+        .pipe(replace(/(\$(?!mq-)(.*?): )(?:.*?);/g, function(match, groupOne, groupTwo) {
             var camelCaseValue = groupTwo.replace(/-([a-z])/g, function(match, character) { return character ? character.toUpperCase() : ''; });
             
             return groupOne + 't(' + camelCaseValue + ');';
