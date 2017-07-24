@@ -1,15 +1,15 @@
-var gulp = require('gulp'),
-    sourcemaps = require('gulp-sourcemaps'),
-    replace = require('gulp-replace'),
-    sassGlob = require('gulp-sass-glob'),
-    sass = require('gulp-sass'),
-    cssnano = require('gulp-cssnano'),
-    uglify = require('gulp-uglify'),
-    rename = require('gulp-rename'),
-    autoprefixer = require('gulp-autoprefixer'),
-    svgSprites = require('gulp-svg-sprites'),
-    mergeStream = require('merge-stream'),
-    runSequence = require('run-sequence');
+var gulp = require('gulp');
+var sourcemaps = require('gulp-sourcemaps');
+var replace = require('gulp-replace');
+var sassGlob = require('gulp-sass-glob');
+var sass = require('gulp-sass');
+var cssnano = require('gulp-cssnano');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+var autoprefixer = require('gulp-autoprefixer');
+var svgSprites = require('gulp-svg-sprites');
+var mergeStream = require('merge-stream');
+var runSequence = require('run-sequence');
 
 gulp.task('build', function() {
     /* ----------------------------------------
