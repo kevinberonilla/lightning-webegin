@@ -50,7 +50,9 @@ gulp.task('tokenMaps', function() {
 gulp.task('sass', function() {
     return gulp.src('./scss/*.scss')
         .pipe(sourcemaps.init())
-        .pipe(sassGlob())
+        .pipe(sassGlob({
+            ignorePaths: ['design-tokens/_analytics-cloud.default.scss'] // Analytics spacing tokens are unique to the app
+        }))
         .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 5 versions', '> 5%', 'ie 9', 'ie 8'],
