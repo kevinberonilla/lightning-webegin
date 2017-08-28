@@ -11,7 +11,7 @@ var svgSprites = require('gulp-svg-sprites');
 var mergeStream = require('merge-stream');
 var runSequence = require('run-sequence');
 
-gulp.task('build', function() {
+gulp.task('build:dependencies', function() {
     /* ----------------------------------------
     Salesforce Lightning Design System
     ---------------------------------------- */
@@ -37,58 +37,71 @@ gulp.task('build', function() {
     return mergeStream(slds, tokens, aljs, svg4everybody);
 });
 
-gulp.task('tokenMaps', function() {
+gulp.task('build:tokenMaps', function() {
     return gulp.src('./scss/design-tokens/**/*')
         .pipe(replace(/(\$(?!mq-)(.*?): )(?:.*?);/g, function(match, groupOne, groupTwo) {
-            var camelCaseValue = groupTwo.replace(/-([a-z])/g, function(match, character) { return character ? character.toUpperCase() : ''; });
+            var camelCaseValue = groupTwo.replace(/-([a-z])/g, function(match, character) {
+                    return character ? character.toUpperCase() : '';
+                });
             
             return groupOne + 't(' + camelCaseValue + ');';
         }))
         .pipe(gulp.dest('./scss/design-token-maps'));
 });
 
-gulp.task('sass', function() {
+gulp.task('compile:css', function() {
     return gulp.src('./scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sassGlob({
             ignorePaths: ['design-tokens/_analytics-cloud.default.scss'] // Analytics spacing tokens are unique to the app
         }))
-        .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
+        .pipe(sass({
+            outputStyle: 'expanded'
+        })
+        .on('error', sass.logError))
         .pipe(autoprefixer({
-            browsers: ['last 5 versions', '> 5%', 'ie 9', 'ie 8'],
+            browsers: ['last 2 versions', '> 5%', 'ie 10'],
             cascade: false
         }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./css'));
 });
 
-gulp.task('cssnano', function() {
+gulp.task('minify:css', function() {
     return gulp.src(['./css/**/*.css', '!./css/**/*.min.css'])
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(cssnano({ discardUnused: { fontFace: false } }))
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(cssnano({
+            discardUnused: {
+                fontFace: false
+            }
+        }))
         .pipe(gulp.dest('./css'));
 });
 
-gulp.task('uglify', function() {
+gulp.task('minify:js', function() {
     return gulp.src(['./js/**/*.js', '!./js/**/*.min.js'])
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(rename({
+            suffix: '.min'
+        }))
         .pipe(uglify())
         .pipe(gulp.dest('./js'));
 });
 
-gulp.task('sprites', function () {
+gulp.task('build:svgSprites', function () {
     return gulp.src('./images/icons/project/*.svg')
         .pipe(svgSprites({ mode: 'symbols' }))
         .pipe(gulp.dest('./images/icons/project-sprite'));
 });
 
 gulp.task('watch', function() {
-    gulp.watch('./scss/**/*.scss', ['sass']);
-    gulp.watch(['./css/**/*.css', '!./css/**/*.min.css'], ['cssnano']);
-    gulp.watch(['./js/**/*.js', '!./js/**/*.min.js'], ['uglify']);
-    gulp.watch('./images/icons/**/*.svg', ['sprites']);
+    gulp.watch('./scss/**/*.scss', ['compile:css']);
+    gulp.watch(['./css/**/*.css', '!./css/**/*.min.css'], ['minify:css']);
+    gulp.watch(['./js/**/*.js', '!./js/**/*.min.js'], ['minify:js']);
+    gulp.watch('./images/icons/**/*.svg', ['build:svgSprites']);
 });
 
-gulp.task('default', ['build'], function() {
-    return runSequence('tokenMaps', 'sass', ['cssnano', 'uglify', 'sprites', 'watch']);
+gulp.task('default', ['build:dependencies'], function() {
+    return runSequence('build:tokenMaps', 'compile:css', ['minify:css', 'minify:js', 'build:svgSprites', 'watch']);
 });
