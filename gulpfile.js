@@ -11,7 +11,7 @@ var svgSprites = require('gulp-svg-sprites');
 var mergeStream = require('merge-stream');
 var runSequence = require('run-sequence');
 
-gulp.task('build:dependencies', function() {
+gulp.task('build:dependencies', () => {
     /* ----------------------------------------
     Salesforce Lightning Design System
     ---------------------------------------- */
@@ -37,7 +37,7 @@ gulp.task('build:dependencies', function() {
     return mergeStream(slds, tokens, aljs, svg4everybody);
 });
 
-gulp.task('build:tokenMaps', function() {
+gulp.task('build:tokenMaps', () => {
     return gulp.src('./scss/design-tokens/**/*')
         .pipe(replace(/(\$(?!mq-)(.*?): )(?:.*?);/g, function(match, groupOne, groupTwo) {
             var camelCaseValue = groupTwo.replace(/-([a-z])/g, function(match, character) {
@@ -49,7 +49,7 @@ gulp.task('build:tokenMaps', function() {
         .pipe(gulp.dest('./scss/design-token-maps'));
 });
 
-gulp.task('compile:css', function() {
+gulp.task('compile:css', () => {
     return gulp.src('./scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sassGlob({
@@ -67,7 +67,7 @@ gulp.task('compile:css', function() {
         .pipe(gulp.dest('./css'));
 });
 
-gulp.task('minify:css', function() {
+gulp.task('minify:css', () => {
     return gulp.src(['./css/**/*.css', '!./css/**/*.min.css'])
         .pipe(rename({
             suffix: '.min'
@@ -80,7 +80,7 @@ gulp.task('minify:css', function() {
         .pipe(gulp.dest('./css'));
 });
 
-gulp.task('minify:js', function() {
+gulp.task('minify:js', () => {
     return gulp.src(['./js/**/*.js', '!./js/**/*.min.js'])
         .pipe(rename({
             suffix: '.min'
@@ -95,13 +95,13 @@ gulp.task('build:svgSprites', function () {
         .pipe(gulp.dest('./images/icons/project-sprite'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', () => {
     gulp.watch('./scss/**/*.scss', ['compile:css']);
     gulp.watch(['./css/**/*.css', '!./css/**/*.min.css'], ['minify:css']);
     gulp.watch(['./js/**/*.js', '!./js/**/*.min.js'], ['minify:js']);
     gulp.watch('./images/icons/**/*.svg', ['build:svgSprites']);
 });
 
-gulp.task('default', ['build:dependencies'], function() {
+gulp.task('default', ['build:dependencies'], () => {
     return runSequence('build:tokenMaps', 'compile:css', ['minify:css', 'minify:js', 'build:svgSprites', 'watch']);
 });
