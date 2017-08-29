@@ -49,7 +49,7 @@ gulp.task('build:tokenMaps', () => {
         .pipe(gulp.dest('./scss/design-token-maps'));
 });
 
-gulp.task('compile:css', () => {
+gulp.task('compile:sass', () => {
     return gulp.src('./scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sassGlob({
@@ -96,12 +96,12 @@ gulp.task('build:svgSprites', function () {
 });
 
 gulp.task('watch', () => {
-    gulp.watch('./scss/**/*.scss', ['compile:css']);
+    gulp.watch('./scss/**/*.scss', ['compile:sass']);
     gulp.watch(['./css/**/*.css', '!./css/**/*.min.css'], ['minify:css']);
     gulp.watch(['./js/**/*.js', '!./js/**/*.min.js'], ['minify:js']);
     gulp.watch('./images/icons/**/*.svg', ['build:svgSprites']);
 });
 
 gulp.task('default', ['build:dependencies'], () => {
-    return runSequence('build:tokenMaps', 'compile:css', ['minify:css', 'minify:js', 'build:svgSprites', 'watch']);
+    return runSequence('build:tokenMaps', 'compile:sass', ['minify:css', 'minify:js', 'build:svgSprites', 'watch']);
 });
