@@ -1,0 +1,3 @@
+@mixin animation($property: all, $duration: 250ms, $timing-function: ease, $delay: 0ms) {
+    transition: $property $duration $timing-function $delay;
+}

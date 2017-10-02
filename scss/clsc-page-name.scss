@@ -1,0 +1,10 @@
+/* ----------------------------------------
+Partials
+---------------------------------------- */
+@import 'design-tokens/**/*';
+@import 'variables';
+@import 'mixins';
+
+.#{$scope} {
+    // Place your VF-secific styles here
+}

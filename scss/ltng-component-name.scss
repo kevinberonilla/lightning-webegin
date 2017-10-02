@@ -1,0 +1,10 @@
+/* ----------------------------------------
+Partials
+---------------------------------------- */
+@import 'design-token-maps/**/*';
+@import 'variables';
+@import 'mixins';
+
+.THIS.#{$scope} {
+    // Place your component-secific styles here
+}
