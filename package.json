@@ -4,7 +4,7 @@
   "description": "A bare-bones web development starting point with extended styles for Lightning.",
   "main": "gulpfile.js",
   "devDependencies": {
-    "@salesforce-ux/design-system": "^2.3.0",
+    "@salesforce-ux/design-system": "^2.4.4",
     "appiphony-lightning-js": "^3.1.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
