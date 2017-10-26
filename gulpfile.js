@@ -18,7 +18,13 @@ gulp.task('build:dependencies', () => {
     var slds = gulp.src('./node_modules/@salesforce-ux/design-system/assets/**/*')
         .pipe(gulp.dest('./assets'));
     
-    var tokens = gulp.src(['./node_modules/@salesforce-ux/design-system/design-tokens/dist/**/*.default.scss', '!node_modules/@salesforce-ux/design-system/design-tokens/dist/force-font-commons.default.scss'])
+    var tokens = gulp.src([
+            './node_modules/@salesforce-ux/design-system/design-tokens/dist/**/*.default.scss',
+            '!node_modules/@salesforce-ux/design-system/design-tokens/dist/force-font-commons.default.scss',
+            '!node_modules/@salesforce-ux/design-system/design-tokens/dist/icon-paths.default.scss', // Incorrectly formatted values are causing errors
+            '!node_modules/@salesforce-ux/design-system/design-tokens/dist/brand.default.scss', // Incorrectly formatted values are causing errors
+            '!node_modules/@salesforce-ux/design-system/design-tokens/dist/analytics-cloud.default.scss' // Analytics spacing tokens are unique to the app
+        ])
         .pipe(rename({ prefix: '_' }))
         .pipe(gulp.dest('./scss/design-tokens'));
     
@@ -52,9 +58,7 @@ gulp.task('build:tokenMaps', () => {
 gulp.task('compile:sass', () => {
     return gulp.src('./scss/*.scss')
         .pipe(sourcemaps.init())
-        .pipe(sassGlob({
-            ignorePaths: ['design-tokens/_analytics-cloud.default.scss'] // Analytics spacing tokens are unique to the app
-        }))
+        .pipe(sassGlob())
         .pipe(sass({
             outputStyle: 'expanded'
         })
