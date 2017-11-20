@@ -99,7 +99,7 @@ gulp.task('build:svgSprites', function () {
         .pipe(gulp.dest('./images/icons/project-sprite'));
 });
 
-gulp.task('watch', () => {
+gulp.task('init:watch', () => {
     gulp.watch('./scss/**/*.scss', ['compile:sass']);
     gulp.watch(['./css/**/*.css', '!./css/**/*.min.css'], ['minify:css']);
     gulp.watch(['./js/**/*.js', '!./js/**/*.min.js'], ['minify:js']);
@@ -107,5 +107,5 @@ gulp.task('watch', () => {
 });
 
 gulp.task('default', ['build:dependencies'], () => {
-    return runSequence('build:tokenMaps', 'compile:sass', ['minify:css', 'minify:js', 'build:svgSprites', 'watch']);
+    return runSequence('build:tokenMaps', 'compile:sass', ['minify:css', 'minify:js', 'build:svgSprites', 'init:watch']);
 });
