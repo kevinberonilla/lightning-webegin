@@ -20,10 +20,7 @@ gulp.task('build:dependencies', () => {
     
     var tokens = gulp.src([
             './node_modules/@salesforce-ux/design-system/design-tokens/dist/**/*.default.scss',
-            '!node_modules/@salesforce-ux/design-system/design-tokens/dist/force-font-commons.default.scss',
-            '!node_modules/@salesforce-ux/design-system/design-tokens/dist/icon-paths.default.scss', // Incorrectly formatted values are causing errors
-            '!node_modules/@salesforce-ux/design-system/design-tokens/dist/brand.default.scss', // Incorrectly formatted values are causing errors
-            '!node_modules/@salesforce-ux/design-system/design-tokens/dist/analytics-cloud.default.scss' // Analytics spacing tokens are unique to the app
+            '!node_modules/@salesforce-ux/design-system/design-tokens/dist/{s1,force}*.scss'
         ])
         .pipe(rename({ prefix: '_' }))
         .pipe(gulp.dest('./scss/design-tokens'));
